@@ -63,18 +63,19 @@ function App() {
         
         {pdfFile && (
           <div 
-            className="relative "
-            onClick={handleClick}
-          >
+            className="relative inline-block justify-center"
+            >
             <Document
               file={pdfFile}
               onLoadSuccess={onDocumentLoadSuccess}
-              className="mx-auto"
-            >
+              className="mx-auto items-center"
+                onClick={handleClick}
+              >
               {Array.from(new Array(numPages), (el, index) => (
                 <Page 
                   key={`page_${index + 1}`}
                   pageNumber={index + 1}
+                  scale={1}
                   className="mb-4 border border-gray-300"
                 />
               ))}
@@ -90,14 +91,14 @@ function App() {
                   height: '100px',
                   backgroundColor: 'rgba(59, 130, 246, 0.3)',
                   border: '2px solid rgb(59, 130, 246)',
-                  transform: 'translate(0, -100%)',
+                  transform: 'translateY(-100%)',
                 }}
                 className="pointer-events-none flex items-center justify-center"
               >
                 <div className="absolute  bg-white px-2 py-1 text-sm border border-blue-500 rounded">
-                  Top: {Math.round(coordinates.top)}px
+                  Top: {Math.round(coordinates.top)}
                   <br />
-                  Left: {Math.round(coordinates.left)}px
+                  Left: {Math.round(coordinates.left)}
                 </div>
               </div>
             )}
