@@ -64,11 +64,11 @@ export default function App() {
         )}
 
         {pdfFile && (
-          <div className="mx-auto">
+          <div className="flex justify-center ">
             <Document
               file={pdfFile}
               onLoadSuccess={onDocumentLoadSuccess}
-              className="mx-auto"
+              className="mx-auto self-center"
             >
               {Array.from(new Array(numPages), (_, index) => {
                 const pageNum = index + 1;
@@ -76,7 +76,7 @@ export default function App() {
                   // Wrap each Page in its own clickable container
                   <div 
                     key={pageNum}
-                    className="relative mb-4 border border-gray-300 inline-block"
+                    className="relative mb-4 border border-gray-300 "
                     onClick={(e) => handlePageClick(e, pageNum)}
                   >
                     <Page
