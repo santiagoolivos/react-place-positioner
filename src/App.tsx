@@ -20,7 +20,6 @@ export default function App() {
     setNumPages(numPages);
   }
 
-  // Fired when user clicks on a particular page container
   const handlePageClick = (
     event: React.MouseEvent<HTMLDivElement>, 
     pageNumber: number
@@ -29,7 +28,6 @@ export default function App() {
     const top = event.clientY - rect.top;
     const left = event.clientX - rect.left;
 
-    // We store pageNumber so we know which page we clicked
     setRectData({ pageNumber, top, left });
   };
 
@@ -64,16 +62,15 @@ export default function App() {
         )}
 
         {pdfFile && (
-          <div className="flex justify-center ">
+          <div className="flex">
             <Document
               file={pdfFile}
               onLoadSuccess={onDocumentLoadSuccess}
-              className="mx-auto self-center"
+              className="mx-auto"
             >
               {Array.from(new Array(numPages), (_, index) => {
                 const pageNum = index + 1;
                 return (
-                  // Wrap each Page in its own clickable container
                   <div 
                     key={pageNum}
                     className="relative mb-4 border border-gray-300 "
@@ -82,6 +79,7 @@ export default function App() {
                     <Page
                       pageNumber={pageNum}
                       scale={1}
+                      renderTextLayer={false}
                     />
                     
                     {rectData && rectData.pageNumber === pageNum && (
@@ -90,20 +88,18 @@ export default function App() {
                           position: 'absolute',
                           top: rectData.top,
                           left: rectData.left,
-                          width: '200px',
-                          height: '100px',
+                          width: '150px',
+                          height: '60px',
                           backgroundColor: 'rgba(59, 130, 246, 0.3)',
                           border: '2px solid rgb(59, 130, 246)',
                           transform: 'translateY(-100%)',
                         }}
-                        className="pointer-events-none flex items-center justify-center"
+                        className="pointer-events-none flex items-center justify-center rounded-sm"
                       >
-                        <div className="absolute bg-white px-2 py-1 text-sm border border-blue-500 rounded">
-                          Top: {Math.round(rectData.top)}
-                          <br />
-                          Left: {Math.round(rectData.left)}
-                          <br />
-                          Page: {rectData.pageNumber}
+                        <div className="absolute bg-white px-2 py-y border border-blue-500 rounded text-xs">
+                          <p>Top: {Math.round(rectData.top)}</p>
+                          <p>Left: {Math.round(rectData.left)}</p>
+                          <p>Page: {rectData.pageNumber}</p>
                         </div>
                       </div>
                     )}
