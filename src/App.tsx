@@ -42,7 +42,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-20">
           <h1 className="text-2xl font-bold">PDF Viewer with Click Coordinates</h1>
           <label className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer transition-colors">
             Upload PDF
@@ -90,16 +90,14 @@ export default function App() {
                           left: rectData.left,
                           width: '150px',
                           height: '60px',
-                          backgroundColor: 'rgba(59, 130, 246, 0.3)',
-                          border: '2px solid rgb(59, 130, 246)',
                           transform: 'translateY(-100%)',
                         }}
-                        className="pointer-events-none flex items-center justify-center rounded-sm"
+                        className="rounded-sm bg-blue-200 border-2 border-blue-500"
                       >
-                        <div className="absolute bg-white px-2 py-y border border-blue-500 rounded text-xs">
+                        <div className="absolute pl-1  text-xs font-mono bottom-0 left-0 leading-tight">
+                          <p>Page: {rectData.pageNumber}</p>
                           <p>Top: {Math.round(rectData.top)}</p>
                           <p>Left: {Math.round(rectData.left)}</p>
-                          <p>Page: {rectData.pageNumber}</p>
                         </div>
                       </div>
                     )}
