@@ -94,7 +94,7 @@ export default function App() {
                         }}
                         className="rounded-sm bg-blue-200 border-2 border-blue-500"
                       >
-                        <div className="absolute pl-1  text-xs font-mono bottom-0 left-0 leading-tight">
+                        <div className="absolute pl-1 p-0.5 text-xs font-mono bottom-0 left-0 leading-tight">
                           <p>Page: {rectData.pageNumber}</p>
                           <p>Top: {Math.round(rectData.top)}</p>
                           <p>Left: {Math.round(rectData.left)}</p>
